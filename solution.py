@@ -22,7 +22,19 @@ def solvepart1():
         sum = sum * numWins
     print(sum)
 
+def solvepart2():
+    #format data
+    data = fileRead("input.txt")
+    time = int(" ".join(data[0].split()).split(":")[1].replace(" ",""))
+    record = int(" ".join(data[1].split()).split(":")[1].strip().replace(" ",""))
 
+    #solve races
+    numWins = 0
+    for currentTime in range(time):
+        distance = (time-currentTime)*currentTime
+        if (distance > record):
+            numWins = numWins + 1
+    print(numWins)
 
 def fileRead(name):
     data = []
@@ -31,4 +43,4 @@ def fileRead(name):
         data.append(line);
     return data
 
-solvepart1()
+solvepart2()
